@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>Bootstrap Loginx</title>
+    <script>
+        function validateEmail() {
+            const emailInput = document.getElementById('email');
+            const email = emailInput.value;
+            const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+            const errorMessage = document.getElementById('emailError');
+
+            if (!emailPattern.test(email)) {
+                if (!errorMessage) {
+                    const error = document.createElement('div');
+                    error.id = 'emailError';
+                    error.className = 'error-message';
+                    emailInput.parentNode.appendChild(error);
+                }
+                emailInput.classList.add('is-invalid');
+                return false;
+            } else {
+                if (errorMessage) {
+                    errorMessage.remove();
+                }
+                emailInput.classList.remove('is-invalid');
+                return true;
+            }
+        }
+    </script>
+</head>
+<body>
+
+    <!----------------------- Main Container -------------------------->
+    <div class="container d-flex justify-content-center align-items-center min-vh-100">
+
+    <!----------------------- Login Container -------------------------->
+        <div class="row border rounded-5 p-3 bg-white shadow box-area">
+
+    <!--------------------------- Left Box ----------------------------->
+            <div class="col-md-6 rounded-4 d-flex justify-content-center align-items-center flex-column left-box" style="background: #ffff;">
+                <div class="featured-image mt-4">
+                    <img src="images/login.jpg" class="img-fluid" style="width: 250px;">
+                </div>
+                <p class="text-black fs-2" style="font-family: 'Courier New', Courier, Monospace; font-weight: 600;"> Login Now</p>
+            </div>
+
+    <!-------------------- ------ Right Box ---------------------------->
+            <div class="col-md-6 right-box">
+                <div class="row align-items-center">
+                    <div class="header-text mb-4">
+                        <h2>Halo</h2>
+                        <p>Isi Keterangan di Bawah Yuk!</p>
+                    </div>
+                    <div class="input-group mb-3">
+                        <input type="text" id="email" class="form-control form-control-lg bg-light fs-6" placeholder="Email address" onblur="validateEmail()">
+                    </div>
+                    <div class="input-group mb-1">
+                        <input type="password" class="form-control form-control-lg bg-light fs-6" placeholder="Password">
+                    </div>
+                    <div class="input-group mb-5 d-flex justify-content-between">
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="FormCheck">
+                            <label for="FormCheck" class="form-check-label text-secondary"><small>Ingat Saya</small></label>
+                        </div>
+                        <div class="forgot d-flex">
+                            <small><a href='#'>Lupa Password?</a></small>
+                        </div>
+                    </div>
+                    <div class="input-group mb-3">
+                        <button class="btn btn-primary btn-lg w-100 fs-6" onclick="return validateEmail()">Login</button>
+                    </div>
+                    <div class="input-group mb-3">
+                        <button class="btn btn-light btn-lg w-100 fs-6"><img src="images/google.png" style="width:20px" class="me-2"><small>Sign In with Google</small></button>
+                    </div>
+                    <div class="row">
+                        <small>Belum Punya Account? <a href="Register.html">Register</a></small>
+                    </div>
+                </div>
+            </div>
+
+        </div>      
+    </div>
+</body>
+</html>
